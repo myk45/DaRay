@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <ctime>
 #include <cmath>
 #include "Ray.h"
 #include "Camera.h"
@@ -8,6 +9,9 @@
 #include "Scene.h"
 #include "Plane.h"
 #include <GL/glut.h>
+
+#define _DEBUG_MAIN
+#undef  _DEUBG_MAIN
 
 unsigned char colorBuffer[500][500][3];
 
@@ -36,6 +40,10 @@ int main(int argc, char* argv[])
 			
 	scene->addObject( new Plane( vec3(0, 1, 0), vec3(0, -1, 10), vec4(0.0, 0.2, 0.2, 0.0) ) );
 	scene->addObject( new Sphere( vec3(0, 1.5, 10), 3.5, vec4(1.0, 0.0, 0.0, 0.0) ) );
+
+#ifdef _DEBUG_MAIN
+	clock_t begin = clock();							
+#endif		
 	
 	for (int i = 0; i < Window::mWindowHeight; i++) {
 		for (int j = 0; j < Window::mWindowWidth; j++) {			
@@ -51,11 +59,18 @@ int main(int argc, char* argv[])
 			scene->clearHitList();
 			
 
-#ifdef _DEBUG
+#ifdef _DEBUG_MAIN
 	//getchar();								
 #endif			
 		}
 	}
+
+#ifdef _DEBUG_MAIN
+	clock_t end = clock();	
+	double traceTime = double(end - begin) / CLOCKS_PER_SEC;
+	std::cout << "\nTime for tracing this scene: " << traceTime << "\nEnter to continue";						
+	getchar();
+#endif	
 
 	initialiseGLUT(argc, argv);		
 	return 0;
