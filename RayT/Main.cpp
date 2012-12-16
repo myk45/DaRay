@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 	Scene* scene = new Scene();
 			
 	scene->addObject( new Plane( vec3(0, 1, 0), vec3(0, -1, 10), vec4(0.0, 0.2, 0.2, 0.0) ) );
-	scene->addObject( new Sphere( vec3(0, 3.4, 10), 3.5, vec4(1.0, 0.0, 0.0, 0.0) ) );
+	scene->addObject( new Sphere( vec3(0, 1.5, 10), 3.5, vec4(1.0, 0.0, 0.0, 0.0) ) );
 	
 	for (int i = 0; i < Window::mWindowHeight; i++) {
 		for (int j = 0; j < Window::mWindowWidth; j++) {			

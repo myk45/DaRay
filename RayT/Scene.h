@@ -10,6 +10,7 @@ struct Hit {
 	Object* obj;
 	double intersectDis;
 	
+	Hit() {}
 	Hit(Object *o, double i) { obj = o; intersectDis = i; }
 };
 

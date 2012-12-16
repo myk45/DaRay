@@ -70,13 +70,13 @@ vec4 Scene::processHitListAndGetColor()
 		return vec4(0.5, 0.5, 0.5, 0.0);
 	
 	// TODO: Do some calculations and get a color
-	Hit winHit(mHitList[0].obj, mHitList[0].intersectDis);
-	double max = 0;
+	Hit winHit;
+	double min = 0xFFFFFFFF;
 	for (int i = 0; i < mHitList.size(); i++) {
-		if (mHitList[i].intersectDis > max) {
+		if (mHitList[i].intersectDis < min) {
 			winHit.obj = mHitList[i].obj;
 			winHit.intersectDis = mHitList[i].intersectDis;
-			max = winHit.intersectDis;
+			min = winHit.intersectDis;
 		}				
 	}	
 #ifdef _DEBUG_SCENE	
