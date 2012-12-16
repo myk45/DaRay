@@ -14,7 +14,8 @@ class Object {
 	public:			
 			OBJECT_TYPE getObjectType() { return mObjType; }
 			vec4 getObjectColor() 		{ return mColor;   }
-			virtual double intersectObject(Ray *) = 0;									
+			virtual double intersectObject(Ray *) = 0;		
+			virtual vec3 getNormal(vec3) = 0;								
 			
 };
 

@@ -1,5 +1,5 @@
 # write comment!
-OBJS = Main.o Camera.o Window.o Ray.o Object.o Scene.o Sphere.o Plane.o
+OBJS = Main.o Camera.o Window.o Ray.o Object.o Scene.o Sphere.o Plane.o Light.o
 INC = -I "./"
 CC = g++
 DEBUG = -g
@@ -34,6 +34,9 @@ Scene.o:
 	
 Plane.o:
 	g++ -c Plane.cpp $(INC)		
+		
+Light.o:
+	g++ -c Light.cpp $(INC)		
 	
 	
 clean:

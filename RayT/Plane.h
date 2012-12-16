@@ -15,10 +15,11 @@ class Plane : public Object {
 	public:
 			inline vec3   getNormal()   { return mNormal;   }
 			inline double getDistance() { return mDistance; }
+			virtual vec3 getNormal(vec3 pos) { return mNormal; }			
 			
 			Plane();
 			Plane(vec3, vec3, vec4);
-			virtual double intersectObject(Ray *);			
+			virtual double intersectObject(Ray *);				
 			
 };
 

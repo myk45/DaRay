@@ -6,6 +6,7 @@
 #include "Window.h"
 #include "Common.h"
 #include "Sphere.h"
+#include "Light.h"
 #include "Scene.h"
 #include "Plane.h"
 #include <GL/glut.h>
@@ -36,10 +37,12 @@ void initialiseGLUT(int argc, char **argv)
 int main(int argc, char* argv[])
 {	
 	Camera *mainCamera = new Camera(POS, LOOK, UP, 1.0, 90.0);
-	Scene* scene = new Scene();
+	Scene* scene = new Scene();	
 			
-	scene->addObject( new Plane( vec3(0, 1, 0), vec3(0, -1, 10), vec4(0.0, 0.2, 0.2, 0.0) ) );
+	// Add some objects and lights		
+	scene->addObject( new Plane( vec3(0, 1, 0), vec3(0, -1, 10), vec4(0.0, 1.0, 1.0, 0.0) ) );
 	scene->addObject( new Sphere( vec3(0, 1.5, 10), 3.5, vec4(1.0, 0.0, 0.0, 0.0) ) );
+	scene->addLight(  new Light( vec3(10, 10, 10), vec4(1.0, 1.0, 1.0, 0.0), false) );
 
 #ifdef _DEBUG_MAIN
 	clock_t begin = clock();							

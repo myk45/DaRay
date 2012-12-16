@@ -15,6 +15,11 @@ Sphere::Sphere(vec3 pos, double rad, vec4 col)
 	mRadius   = rad;
 }
 
+vec3 Sphere::getNormal(vec3 pos)
+{
+	return (pos - mPosition);	
+}
+
 double Sphere::intersectObject(Ray* ray)
 {
 #ifdef _DEBUG_SPHERE	
@@ -70,3 +75,6 @@ double Sphere::intersectObject(Ray* ray)
 	
 	return -1.0;
 }
+
+
+

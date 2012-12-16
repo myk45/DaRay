@@ -17,6 +17,8 @@ class Sphere : public Object {
 			inline vec3   getPos()	  { return mPosition; }
 			
 			virtual double intersectObject(Ray *);
+			virtual vec3 getNormal(vec3 pos);			
+			
 			vec3 getNormalAt(vec2 pixelPos); 
 
 };

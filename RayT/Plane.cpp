@@ -12,7 +12,6 @@ Plane::Plane(vec3 norm, vec3 point, vec4 col)
 	mObjType = OBJ_PLANE;
 	mColor = col;
 	mNormal = norm;
-//	mDistance = dis;
 	mPointInPlane = point;
 }
 
