@@ -4,39 +4,39 @@ INC = -I "./"
 CC = g++
 DEBUG = -g
 CFLAGS = -Wall -c $(DEBUG)
-LDFLAGS = -lGL -lGLU -lglut
-LIBS = -lGL -lGLU -lglut
+LDFLAGS = -lGL -lGLU -lglut 
+LIBS = -lGL -lGLU -lglut 
 
 RayT: $(OBJS)
-	g++ -lGL -lGLU -lglut $(OBJS) -o RayT.out
+	g++ -pthread -lGL -lGLU -lglut $(OBJS) -o RayT.out
 	rm -f $(OBJS)
 
 Main.o:
-	g++ -c Main.cpp $(INC)
+	g++ -c -std=c++0x -pthread Main.cpp $(INC)
 	
 Camera.o:
-	g++ -c Camera.cpp $(INC)	
+	g++ -c -std=c++0x -pthread Camera.cpp $(INC)	
 	
 Window.o:
-	g++ -c Window.cpp $(INC)	
+	g++ -c -std=c++0x -pthread Window.cpp $(INC)	
 
 Ray.o:
-	g++ -c Ray.cpp $(INC)
+	g++ -c -std=c++0x -pthread Ray.cpp $(INC)
 	
 Object.o:
-	g++ -c Object.cpp $(INC)	
+	g++ -c -std=c++0x -pthread Object.cpp $(INC)	
 	
 Sphere.o:
-	g++ -c Sphere.cpp $(INC)	
+	g++ -c -std=c++0x -pthread Sphere.cpp $(INC)	
 	
 Scene.o:
-	g++ -c Scene.cpp $(INC)	
+	g++ -c -std=c++0x -pthread Scene.cpp $(INC)	
 	
 Plane.o:
-	g++ -c Plane.cpp $(INC)		
+	g++ -c -std=c++0x -pthread Plane.cpp $(INC)		
 		
 Light.o:
-	g++ -c Light.cpp $(INC)		
+	g++ -c -std=c++0x -pthread Light.cpp $(INC)		
 	
 	
 clean:

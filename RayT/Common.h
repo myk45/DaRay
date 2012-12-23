@@ -1,8 +1,28 @@
 #ifndef _COMMON_
 #define _COMMON_
 
-#define _DEBUG 
-//#undef  _DEBUG
+// ===========================================================================
+// Some preprocessor checks
+// ===========================================================================
+#ifdef __linux__
+	#if __GNUC__ >= 4 && __GNUC_MINOR__ >= 6 && __GNUC_PATCHLEVEL__ >= 3 
+		#define __CPP__11__
+		#pragma message("C++ 11 supported")
+	#else
+		#undef __CPP__11__
+		#pragma message("C++ 11 not supported")
+	#endif	
+#else 
+	#if _MSC_VER > 1600
+		#define __CPP__11__
+		#pragma message("C++ 11 supported")
+	#else 
+		#undef __CPP__11__
+		#pragma message("C++ 11 not supported")
+	#endif			
+#endif	
+// ===========================================================================
+// ===========================================================================
 
 #include <cmath>
 #include <cassert>
@@ -23,5 +43,8 @@ enum OBJECT_TYPE {
 	OBJ_SPHERE,
 	OBJ_COUNT
 };
+
+
+static const int NUM_THREADS = 4;
 
 #endif
