@@ -11,6 +11,7 @@ Ray::Ray()
 
 }
 
+
 Ray::Ray(vec3 o, vec3 d)
 { 
 	mOrigin = o; 

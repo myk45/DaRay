@@ -13,9 +13,13 @@ std::string OBJ_STR[10] =
 
 Scene::Scene()
 {
-
+	mAmbientLight = new Light(vec3(0, 0, 0), vec4(1.0, 0.0, 0.0, 0.0), false);
 }
 
+Light* Scene::getAmbientLight()
+{
+	return mAmbientLight;
+}
 
 void Scene::addObject(Object* obj)
 {
@@ -53,8 +57,7 @@ std::vector<Hit>& Scene::getHitList(Ray* ray)
 			std::cout << "\nObject: " << OBJ_STR[mObjectList[i]->getObjectType()] << " does not intersect!";
 			std::cout << "\n+++++++++++++++++++++++++++++++++++++++++++++++++++\n";
 #endif			
-		}
-		
+		}		
 	}
 	
 	return mHitList;
@@ -74,7 +77,10 @@ vec4 Scene::lightScene(Hit hitObj)
 		resultantColor += vec4(mLightList[i]->getLightColor().r * maxNdotL * hitObj.obj->getObjectColor().r,
 							   mLightList[i]->getLightColor().g * maxNdotL * hitObj.obj->getObjectColor().g, 
 							   mLightList[i]->getLightColor().b * maxNdotL * hitObj.obj->getObjectColor().b, 
-							   0.0);					
+							   0.0);	
+		
+		// TODO: Add some ambient component
+		//resultantColor *= mAmbientLight->getLightColor();
 		
 #ifdef _DEBUG_SCENE	
 		if (hitObj.obj->getObjectType() == 1) {
@@ -86,7 +92,20 @@ vec4 Scene::lightScene(Hit hitObj)
 #endif									   		   							  
 	}	
 	
-	return resultantColor;
+	double intersectD = NO_INTERSECTION;
+	for (int i = 0; i < mLightList.size(); i++) {
+		vec3 tempRay = glm::normalize(mLightList[i]->getLightPosition() - hitObj.intersectPoint); 
+		Ray* shadowRay = Ray::getRay(hitObj.intersectPoint, tempRay);	 // TODO: Write Ray types.
+																		 // TODO: Check for leaks!						
+		for (int j = 0; j < mObjectList.size(); j++) {
+			intersectD = mObjectList[j]->intersectObject(shadowRay);				
+		}									
+	}
+		
+	if (hitObj.obj->getObjectType() == 1 || intersectD == NO_INTERSECTION)
+		return resultantColor;
+	else
+		return vec4(0.0, 0.0, 0.0, 0.0);							
 }
 
 vec4 Scene::processHitListAndGetColor()

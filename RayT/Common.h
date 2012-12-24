@@ -15,14 +15,13 @@
 #else 
 	#if _MSC_VER > 1600
 		#define __CPP__11__
-		#pragma message("C++ 11 supported")
 	#else 
 		#undef __CPP__11__
-		#pragma message("C++ 11 not supported")
 	#endif			
 #endif	
 // ===========================================================================
 // ===========================================================================
+
 
 #include <cmath>
 #include <cassert>

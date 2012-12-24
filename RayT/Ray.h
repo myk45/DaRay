@@ -17,13 +17,15 @@ class Ray {
 			Ray();
 			Ray(vec3 o, vec3 d); 
 			
-			~Ray();
+			~Ray() {}
 			
 			inline vec3 getRayOrigin()    { return mOrigin;    }
 			inline vec3 getRayDirection() { return mDirection; }
 			
 			// Like a factory for rays! haha! how come?!
 			static Ray* getRay(glm::vec2 pixelPos, Camera* cam);
+			
+			static Ray* getRay(glm::vec3 o, glm::vec3 d) { return new Ray(o, d); }
 
 };
 #endif

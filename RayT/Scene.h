@@ -21,17 +21,21 @@ class Scene {
 			std::vector<Object*> mObjectList;
 			std::vector<Light*> mLightList;
 			std::vector<Hit> mHitList;
+			Light* mAmbientLight;
 			
 	public:
 			Scene();
 			void addObject(Object*);
 			void addLight(Light*);
+
+			Light* Scene::getAmbientLight();
 			
 			std::vector<Hit>& getHitList(Ray*);
 			vec4 processHitListAndGetColor();
 			vec4 lightScene(Hit);
 			
-			void clearHitList() { mHitList.clear(); }					
+			void clearHitList() { mHitList.clear(); }			
+
 
 };
 

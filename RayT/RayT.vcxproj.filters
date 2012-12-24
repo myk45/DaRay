@@ -39,7 +39,7 @@
     <ClCompile Include="Plane.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Light.cpp">
+    <ClCompile Include="..\..\..\..\..\..\DaRay\RayT\Light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,7 +71,7 @@
     <ClInclude Include="Plane.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Light.h">
+    <ClInclude Include="..\..\..\..\..\..\DaRay\RayT\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

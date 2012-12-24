@@ -47,8 +47,7 @@ void initialiseGLUT(int argc, char **argv)
 // unsafe function
 void fillPixels(int winWidth, int winHeight, int winWStart, int winHStart,
 				Camera mainCamera, Scene scene)
-{
-		
+{		
 	for (int i = winHStart; i < (winHStart+winHeight); i++) {
 		for (int j = winWStart; j < (winWStart+winWidth); j++) {						
 			Ray *currRay = Ray::getRay(vec2(j, i), &mainCamera);
@@ -69,6 +68,8 @@ void addSceneObjects(Scene* scene)
 {	
 	scene->addObject( new Plane( vec3(0, 1, 0), vec3(0, -1, 10), vec4(0.0, 1.0, 1.0, 0.0) ) );
 	scene->addObject( new Plane( vec3(1, 0, 0), vec3(-5, 0, 10), vec4(0.2, 0.5, 0.7, 0.0) ) );	
+	scene->addObject( new Plane( vec3(0, 0,-1), vec3(0, 0, 1000), vec4(1.0, 1.0, 0.0, 0.0) ) );	
+	
 	scene->addObject( new Sphere( vec3(0, 1.5, 10), 3.5, vec4(1.0, 0.0, 0.0, 0.0) ) );
 	scene->addLight(  new Light( vec3(10, 10, 5), vec4(1.0, 1.0, 1.0, 0.0),  false) );
 	scene->addLight(  new Light( vec3(-10, -10, 10), vec4(1.0, 1.0, 1.0, 0.0), false) );
