@@ -1,5 +1,5 @@
 # write comment!
-OBJS = Main.o Camera.o Window.o Ray.o Object.o Scene.o Sphere.o Plane.o Light.o
+OBJS = Main.o Camera.o Window.o Ray.o Object.o Scene.o Sphere.o Plane.o Light.o TexCoordCalc.o SphereTexCoordCalc.o Texture.o
 INC = -I "./"
 CC = g++
 DEBUG = -g
@@ -37,8 +37,17 @@ Plane.o:
 		
 Light.o:
 	g++ -c -std=c++0x -pthread Light.cpp $(INC)		
+			
+TexCoordCalc.o:
+	g++ -c -std=c++0x -pthread TexCoordCalc.cpp $(INC)	
 	
-	
+SphereTexCoordCalc.o:
+	g++ -c -std=c++0x -pthread SphereTexCoordCalc.cpp $(INC)	
+			
+Texture.o:
+	g++ -c -std=c++0x -pthread Texture.cpp $(INC)	
+			
+					
 clean:
 	rm -f $(OBJS) RayT
 

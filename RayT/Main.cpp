@@ -38,7 +38,7 @@ void initialiseGLUT(int argc, char **argv)
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH);
 	glutInitWindowSize(Window::mWindowWidth, Window::mWindowHeight);
-	glutCreateWindow("Ray tracer");	
+	glutCreateWindow("Da Ray");	
 	glutDisplayFunc(draw);	
 	glutMainLoop();	
 }
@@ -70,9 +70,16 @@ void addSceneObjects(Scene* scene)
 	scene->addObject( new Plane( vec3(1, 0, 0), vec3(-5, 0, 10), vec4(0.2, 0.5, 0.7, 0.0) ) );	
 	scene->addObject( new Plane( vec3(0, 0,-1), vec3(0, 0, 1000), vec4(1.0, 1.0, 0.0, 0.0) ) );	
 	
-	scene->addObject( new Sphere( vec3(0, 1.5, 10), 3.5, vec4(1.0, 0.0, 0.0, 0.0) ) );
-	scene->addLight(  new Light( vec3(10, 10, 5), vec4(1.0, 1.0, 1.0, 0.0),  false) );
-	scene->addLight(  new Light( vec3(-10, -10, 10), vec4(1.0, 1.0, 1.0, 0.0), false) );
+	
+	Texture *tex = new Texture();
+	tex->createTexture("texture.bmp");
+	
+	Sphere* sObj = new Sphere( vec3(0, 1.5, 10), 3.5, vec4(1.0, 0.0, 0.0, 0.0) );
+	sObj->setObjectTexture(tex);
+	
+	scene->addObject(sObj);
+	scene->addLight( new Light( vec3(10, 10, 5), vec4(1.0, 1.0, 1.0, 0.0),  false) );
+	scene->addLight( new Light( vec3(-10, -10, 10), vec4(1.0, 1.0, 1.0, 0.0), false) );
 }
 
 int main(int argc, char* argv[])

@@ -25,6 +25,8 @@
 
 #include <cmath>
 #include <cassert>
+#include <cstdio>
+#include <iostream>
 #include "glm/glm.hpp"
 
 typedef glm::vec4 vec4;
@@ -44,6 +46,11 @@ enum OBJECT_TYPE {
 };
 
 
-static const int NUM_THREADS = 4;
+static const int NUM_THREADS   = 4;
+static const int MAX_TEXTURE_COUNT = 10;
+static const int TEX_WIDTH		   = 256;
+static const int TEX_HEIGHT        = 256;
+
+static const double PI = 3.14;
 
 #endif

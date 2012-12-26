@@ -2,6 +2,7 @@
 #define _SCENE_
 
 #include <vector>
+#include "TexCoordCalc.h"
 #include "Common.h"
 #include "Object.h"
 #include "Light.h"
@@ -28,11 +29,12 @@ class Scene {
 			void addObject(Object*);
 			void addLight(Light*);
 
-			Light* Scene::getAmbientLight();
+			Light* getAmbientLight();
 			
 			std::vector<Hit>& getHitList(Ray*);
 			vec4 processHitListAndGetColor();
 			vec4 lightScene(Hit);
+			vec3 textureObject(Hit);
 			
 			void clearHitList() { mHitList.clear(); }			
 

@@ -63,24 +63,47 @@ std::vector<Hit>& Scene::getHitList(Ray* ray)
 	return mHitList;
 }
 
+vec3 Scene::textureObject(Hit hitObj)
+{
+	if (hitObj.obj->getObjectTexture()) {
+		TexCoordCalculator* tCalc = TexCoordCalculator::getTexCoordCalculator(hitObj.obj);
+
+		vec3 objSpaceCoord = tCalc->getObjectSpaceCoords(hitObj.intersectPoint);
+		vec2 UV = tCalc->calcTexCoord(objSpaceCoord);
+	
+		vec3 texCol = hitObj.obj->getObjectTexture()->getColor(UV);
+		return texCol;
+		
+	} else {
+		return vec3(1.0, 1.0, 1.0);
+	}
+}
+
 vec4 Scene::lightScene(Hit hitObj)
 {
 	vec4 objCol = hitObj.obj->getObjectColor();
 	vec3 normal = glm::normalize(hitObj.obj->getNormal(hitObj.intersectPoint));
 	vec4 resultantColor;	
 	
+	
+
 	// todo: add object's material properties here!
 	for (int i = 0; i < mLightList.size(); i++) {
 		double NdotL = glm::dot(glm::normalize(mLightList[i]->getLightPosition() - hitObj.intersectPoint), normal);
-	
-		double maxNdotL = glm::max(NdotL, 0.0);
-		resultantColor += vec4(mLightList[i]->getLightColor().r * maxNdotL * hitObj.obj->getObjectColor().r,
-							   mLightList[i]->getLightColor().g * maxNdotL * hitObj.obj->getObjectColor().g, 
-							   mLightList[i]->getLightColor().b * maxNdotL * hitObj.obj->getObjectColor().b, 
-							   0.0);	
-		
+						
 		// TODO: Add some ambient component
 		//resultantColor *= mAmbientLight->getLightColor();
+		double maxNdotL = glm::max(NdotL, 0.0);
+
+		if (hitObj.obj->getObjectTexture()) { // Texturing enabled
+			vec3 texCol = textureObject(hitObj);
+			resultantColor += (mLightList[i]->getLightColor().g * maxNdotL * vec4(texCol.x / 255.0, texCol.y / 255.0, texCol.z / 255.0, 1.0));
+		} else {
+			resultantColor += vec4(mLightList[i]->getLightColor().r * maxNdotL * hitObj.obj->getObjectColor().r,
+						mLightList[i]->getLightColor().g * maxNdotL * hitObj.obj->getObjectColor().g, 
+						mLightList[i]->getLightColor().b * maxNdotL * hitObj.obj->getObjectColor().b, 
+						0.0);	
+		}
 		
 #ifdef _DEBUG_SCENE	
 		if (hitObj.obj->getObjectType() == 1) {
@@ -101,7 +124,7 @@ vec4 Scene::lightScene(Hit hitObj)
 			intersectD = mObjectList[j]->intersectObject(shadowRay);				
 		}									
 	}
-		
+
 	if (hitObj.obj->getObjectType() == 1 || intersectD == NO_INTERSECTION)
 		return resultantColor;
 	else

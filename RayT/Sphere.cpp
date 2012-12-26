@@ -9,6 +9,7 @@ Sphere::Sphere()
 
 Sphere::Sphere(vec3 pos, double rad, vec4 col)
 {
+	mTexture = NULL;
 	mObjType = OBJ_SPHERE;	
 	mColor = col;
 	mPosition = pos;

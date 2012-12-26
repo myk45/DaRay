@@ -9,6 +9,7 @@ Plane::Plane()
 
 Plane::Plane(vec3 norm, vec3 point, vec4 col)
 {
+	mTexture = NULL;
 	mObjType = OBJ_PLANE;
 	mColor = col;
 	mNormal = norm;
