@@ -78,7 +78,7 @@ void addSceneObjects(Scene* scene)
 	sObj->setObjectTexture(tex);
 	
 	scene->addObject(sObj);
-	scene->addLight( new Light( vec3(10, 10, 5), vec4(1.0, 1.0, 1.0, 0.0),  false) );
+	scene->addLight( new Light( vec3(5, 10, 2), vec4(1.0, 1.0, 1.0, 0.0),  false) );
 	scene->addLight( new Light( vec3(-10, -10, 10), vec4(1.0, 1.0, 1.0, 0.0), false) );
 }
 

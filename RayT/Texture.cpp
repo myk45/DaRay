@@ -22,7 +22,7 @@ void Texture::createTexture(const char* filename)
 	if ( (texFile = fopen(filename, "rb")) == NULL ) {
 		std::cout << "\nError: Cannot open file for texture!";
 	} else {
-		std::cout << "\nFile: " << filename << "Opened!";
+		std::cout << "\nFile: " << filename << " Opened!";
 		fread(arr, 1, 54, texFile);
 		fread(mTexelData, 1, TEX_WIDTH * TEX_HEIGHT * 3, texFile);
 		fclose(texFile);
@@ -31,8 +31,8 @@ void Texture::createTexture(const char* filename)
 
 vec3 Texture::getColor(const vec2 UV)
 {
-	int i = UV.x * (double)TEX_WIDTH;
-	int j = UV.y * (double)TEX_HEIGHT;
+	int j = UV.x * (double)TEX_WIDTH;
+	int i = UV.y * (double)TEX_HEIGHT;
 		
 #ifdef _DEBUG_TEX
 	std::cout << "From: " << __FILE__;
