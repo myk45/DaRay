@@ -38,7 +38,7 @@ void initialiseGLUT(int argc, char **argv)
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH);
 	glutInitWindowSize(Window::mWindowWidth, Window::mWindowHeight);
-	glutCreateWindow("Da Ray");	
+	glutCreateWindow("\t\t\t\t\tDa Ray");	
 	glutDisplayFunc(draw);	
 	glutMainLoop();	
 }
@@ -72,7 +72,7 @@ void addSceneObjects(Scene* scene)
 	
 	
 	Texture *tex = new Texture();
-	tex->createTexture("texture.bmp");
+	tex->createTexture("./Texture/texture.bmp");
 	
 	Sphere* sObj = new Sphere( vec3(0, 1.5, 10), 3.5, vec4(1.0, 0.0, 0.0, 0.0) );
 	sObj->setObjectTexture(tex);
@@ -83,9 +83,7 @@ void addSceneObjects(Scene* scene)
 }
 
 int main(int argc, char* argv[])
-{	
-	//std::thread t = std::thread(foo);
-	
+{			
 	Camera *mainCamera = new Camera(POS, LOOK, UP, 1.0, 90.0);
 	Scene* scene = new Scene();	
 			

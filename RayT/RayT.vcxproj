@@ -10,6 +10,35 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Objects\Object.cpp" />
+    <ClCompile Include="Objects\Plane.cpp" />
+    <ClCompile Include="Objects\Sphere.cpp" />
+    <ClCompile Include="Scene\Camera.cpp" />
+    <ClCompile Include="Scene\Light.cpp" />
+    <ClCompile Include="Scene\Ray.cpp" />
+    <ClCompile Include="Scene\Scene.cpp" />
+    <ClCompile Include="Scene\Window.cpp" />
+    <ClCompile Include="Texture\SphereTexCoordCalc.cpp" />
+    <ClCompile Include="Texture\TexCoordCalc.cpp" />
+    <ClCompile Include="Texture\Texture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Common.h" />
+    <ClInclude Include="Main.h" />
+    <ClInclude Include="Objects\Object.h" />
+    <ClInclude Include="Objects\Plane.h" />
+    <ClInclude Include="Objects\Sphere.h" />
+    <ClInclude Include="Scene\Camera.h" />
+    <ClInclude Include="Scene\Light.h" />
+    <ClInclude Include="Scene\Ray.h" />
+    <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\Window.h" />
+    <ClInclude Include="Texture\SphereTexCoordCalc.h" />
+    <ClInclude Include="Texture\TexCoordCalc.h" />
+    <ClInclude Include="Texture\Texture.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8341DB12-3142-43E6-9B19-96FFC209A805}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -49,6 +78,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\RayT\;.\RayT\Objects\;.\RayT\Texture;.\RayT\Scene;.\Texture;.\;.\Scene;.\Objects;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -71,35 +101,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\DaRay\RayT\Light.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Object.cpp" />
-    <ClCompile Include="Plane.cpp" />
-    <ClCompile Include="Ray.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="SphereTexCoordCalc.cpp" />
-    <ClCompile Include="TexCoordCalc.cpp" />
-    <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="Window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\DaRay\RayT\Light.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Common.h" />
-    <ClInclude Include="Main.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="Plane.h" />
-    <ClInclude Include="Ray.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="SphereTexCoordCalc.h" />
-    <ClInclude Include="TexCoordCalc.h" />
-    <ClInclude Include="Texture.h" />
-    <ClInclude Include="Window.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

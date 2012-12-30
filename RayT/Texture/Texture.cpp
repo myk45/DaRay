@@ -42,7 +42,7 @@ vec3 Texture::getColor(const vec2 UV)
 #endif	
 
 	// TODO: "Check" not really needed. Check why the check is needed! :D
-	if (i > 0 && i <= 256 && j > 0 && j <= 256) {
+	if (i >= 0 && i <= 256 && j >= 0 && j <= 256) {
 		vec3 col(mTexelData[i][j][2], mTexelData[i][j][1], mTexelData[i][j][0]);
 		return col;
 	}
