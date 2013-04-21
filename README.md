@@ -7,7 +7,7 @@ A simple Ray Tracer.(Uses glm for the math)
 2) A VisualStudio 2010 solution attached as well. <BR>
 
 
-The following features are currently available:
+The following features are currently available: <BR>
 1) Ray-Plane and Sphere intersections <BR>
 2) Shadows <BR>
 3) Textures <BR>
