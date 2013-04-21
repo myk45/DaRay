@@ -9,9 +9,9 @@ A simple Ray Tracer.(Uses glm for the math)
 
 The following features are currently available:
 1) Ray-Plane and Sphere intersections <BR>
-2) Shadows
-3) Textures
-4) Lighting(No specular yet)
-5) MultiThreaded.(provided C++11 support is present)
+2) Shadows <BR>
+3) Textures <BR>
+4) Lighting(No specular yet) <BR>
+5) MultiThreaded.(provided C++11 support is present) <BR>
 
 ![ScreenShot](DaRay.JPG)
