@@ -36,7 +36,7 @@ void draw()
 void initialiseGLUT(int argc, char **argv)
 {	
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA | GLUT_DEPTH);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutInitWindowSize(Window::mWindowWidth, Window::mWindowHeight);
 	glutCreateWindow("\t\t\t\t\tDa Ray");	
 	glutDisplayFunc(draw);	
